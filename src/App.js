@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import JsonFormatter from './pages/JsonFormatter';
+import Base64Tool from './pages/Base64Tool';
+import UrlEncoder from './pages/UrlEncoder';
+import JwtDecoder from './pages/JwtDecoder';
+import TimestampConverter from './pages/TimestampConverter';
+import './styles/global.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/json" element={<JsonFormatter />} />
+        <Route path="/base64" element={<Base64Tool />} />
+        <Route path="/url" element={<UrlEncoder />} />
+        <Route path="/jwt" element={<JwtDecoder />} />
+        <Route path="/timestamp" element={<TimestampConverter />} />
+      </Routes>
+    </Layout>
   );
 }
-
-export default App;

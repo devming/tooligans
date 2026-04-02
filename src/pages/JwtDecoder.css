@@ -1,0 +1,54 @@
+.jwt-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.jwt-section--sig {
+  grid-column: 1 / -1;
+}
+
+.jwt-json {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.jwt-exp {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.jwt-exp--success {
+  background: rgba(0, 184, 148, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.jwt-exp--error {
+  background: rgba(225, 112, 85, 0.1);
+  color: var(--error);
+  border: 1px solid rgba(225, 112, 85, 0.3);
+}
+
+.jwt-sig {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.jwt-sig-note {
+  font-size: 0.75rem;
+  color: var(--warning);
+  font-family: var(--font-mono);
+}
