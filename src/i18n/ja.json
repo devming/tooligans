@@ -1,0 +1,136 @@
+{
+  "common": {
+    "clientSide": "クライアントサイド",
+    "advertisement": "広告 · 728×90",
+    "format": "フォーマット",
+    "minify": "圧縮",
+    "validate": "検証",
+    "encode": "エンコード →",
+    "decode": "← デコード",
+    "swap": "⇄ 入れ替え",
+    "clear": "クリア",
+    "copy": "コピー",
+    "paste": "貼り付け",
+    "convert": "変換",
+    "input": "入力",
+    "output": "出力",
+    "noDataSent": "すべてブラウザ内で処理。データ送信なし。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "jsonFormatter": "JSON フォーマッター",
+    "base64": "Base64",
+    "urlEncoder": "URL エンコーダー",
+    "jwtDecoder": "JWT デコーダー",
+    "timestamp": "タイムスタンプ"
+  },
+  "home": {
+    "tagline": "開発者ユーティリティを、ひとつの場所に",
+    "sub": "すべてのツールはブラウザ内で完結。サーバーへのデータ送信はありません。",
+    "footer": "開発者向けに制作 · オープンソース · トラッキングなし",
+    "tools": {
+      "json": {
+        "title": "JSON フォーマッター",
+        "desc": "シンタックスハイライト付きでJSONをフォーマット・圧縮・検証します。"
+      },
+      "base64": {
+        "title": "Base64",
+        "desc": "Base64文字列を即座にエンコード・デコードします。"
+      },
+      "url": {
+        "title": "URL エンコーダー",
+        "desc": "URLコンポーネントと完全なURIをエンコード・デコードします。"
+      },
+      "jwt": {
+        "title": "JWT デコーダー",
+        "desc": "JWTトークンをデコードし、ヘッダー・ペイロード・有効期限を確認します。"
+      },
+      "timestamp": {
+        "title": "タイムスタンプ変換",
+        "desc": "Unixタイムスタンプと日付を相互変換します。リアルタイムカウンター付き。"
+      }
+    }
+  },
+  "json": {
+    "title": "JSON フォーマッター",
+    "desc": "JSONをフォーマット・圧縮・検証します。すべての処理はブラウザ内で行われます。",
+    "spaces2": "スペース2個",
+    "spaces4": "スペース4個",
+    "tab": "タブ1個（ソフト）",
+    "outputPlaceholder": "フォーマットされたJSONがここに表示されます...",
+    "status": {
+      "formatted": "有効なJSON — フォーマット完了",
+      "minified": "圧縮完了",
+      "valid": "有効なJSON",
+      "copied": "クリップボードにコピーしました！"
+    }
+  },
+  "base64": {
+    "title": "Base64 エンコーダー / デコーダー",
+    "desc": "テキストをBase64にエンコード、またはBase64をテキストにデコードします。UTF-8対応。",
+    "inputPlaceholder": "エンコードするテキスト、またはデコードするBase64を入力...",
+    "outputPlaceholder": "結果がここに表示されます...",
+    "status": {
+      "encoded": "エンコード完了（UTF-8対応）",
+      "decoded": "デコード完了",
+      "invalidBase64": "無効なBase64文字列："
+    }
+  },
+  "url": {
+    "title": "URL エンコーダー / デコーダー",
+    "desc": "URLコンポーネントと完全なURIをエンコード・デコードします。",
+    "componentMode": "encodeURIComponent",
+    "fullMode": "encodeURI（完全URI）",
+    "componentHint": "→ :/?#[]@!$&'()*+,;= を含む全特殊文字をエンコード — クエリパラメータ値に使用",
+    "fullHint": "→ URI構造文字 (:/?#[]@) を保持 — 完全なURLに使用",
+    "outputPlaceholder": "エンコード/デコード結果...",
+    "status": {
+      "encodedComponent": "encodeURIComponentでエンコード完了",
+      "encodedFull": "encodeURIでエンコード完了",
+      "decoded": "デコード完了",
+      "malformedURI": "不正なURI："
+    }
+  },
+  "jwt": {
+    "title": "JWT デコーダー",
+    "desc": "JSON Web Tokenをデコードし、ヘッダー・ペイロード・有効期限を確認します。署名は検証されません。",
+    "tokenLabel": "JWTトークン",
+    "decode": "デコード",
+    "headerLabel": "ヘッダー",
+    "payloadLabel": "ペイロード",
+    "signatureLabel": "署名",
+    "sigNote": "⚠ 署名は表示されますが、暗号学的な検証は行いません。",
+    "status": {
+      "decoded": "JWTのデコード完了",
+      "invalid3parts": "無効なJWT：3つのパーツが必要です（ヘッダー.ペイロード.署名）",
+      "failedDecode": "デコード失敗：",
+      "expired": "有効期限切れ：",
+      "validExpires": "有効 — あと ",
+      "expiresUnit": "時間 {m}分で期限切れ"
+    }
+  },
+  "timestamp": {
+    "title": "タイムスタンプ変換",
+    "desc": "Unixタイムスタンプと人間が読める日付を相互変換します。",
+    "currentLabel": "現在のUnixタイムスタンプ",
+    "useThis": "使用する →",
+    "tsToDate": "Unixタイムスタンプ → 日付",
+    "dateToTs": "日付 → Unixタイムスタンプ",
+    "seconds": "秒",
+    "milliseconds": "ミリ秒",
+    "utc": "UTC",
+    "local": "ローカル",
+    "relative": "相対時間",
+    "orType": "または入力：2024-01-01T00:00:00Z",
+    "copy": "コピー",
+    "ago": "前",
+    "fromNow": "後",
+    "status": {
+      "converted": "変換完了",
+      "invalidTs": "無効なタイムスタンプ",
+      "outOfRange": "タイムスタンプが範囲外",
+      "enterDate": "日付/時刻を入力してください",
+      "invalidDate": "無効な日付文字列"
+    }
+  }
+}

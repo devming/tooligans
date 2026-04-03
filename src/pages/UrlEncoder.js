@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function UrlEncoder() {
+  const { t } = useLanguage();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState(null);
@@ -14,7 +16,7 @@ export default function UrlEncoder() {
         ? encodeURIComponent(input)
         : encodeURI(input);
       setOutput(result);
-      setStatus({ type: 'success', message: `Encoded using ${mode === 'component' ? 'encodeURIComponent' : 'encodeURI'}` });
+      setStatus({ type: 'success', message: mode === 'component' ? t('url.status.encodedComponent') : t('url.status.encodedFull') });
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
     }
@@ -27,9 +29,9 @@ export default function UrlEncoder() {
         ? decodeURIComponent(input)
         : decodeURI(input);
       setOutput(result);
-      setStatus({ type: 'success', message: 'Decoded successfully' });
+      setStatus({ type: 'success', message: t('url.status.decoded') });
     } catch (e) {
-      setStatus({ type: 'error', message: 'Malformed URI: ' + e.message });
+      setStatus({ type: 'error', message: t('url.status.malformedURI') + e.message });
     }
   };
 
@@ -37,71 +39,53 @@ export default function UrlEncoder() {
 
   const swap = () => { setInput(output); setOutput(input); setStatus(null); };
 
+  const modeStyle = (active) => ({
+    padding: '7px 16px',
+    borderRadius: 'var(--radius)',
+    border: '1px solid var(--border)',
+    background: active ? 'var(--accent-dim)' : 'var(--bg-secondary)',
+    color: active ? 'var(--accent-light)' : 'var(--text-secondary)',
+    borderColor: active ? 'var(--accent)' : 'var(--border)',
+    cursor: 'pointer',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '0.8rem',
+  });
+
   return (
     <div>
       <ToolHeader
-        title="URL Encoder / Decoder"
-        description="Encode or decode URL components and full URIs."
-        badge="Client-side"
+        title={t('url.title')}
+        description={t('url.desc')}
+        badge={t('common.clientSide')}
       />
 
       <div style={{ marginBottom: '16px' }}>
         <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-          <button
-            className={`mode-btn ${mode === 'component' ? 'mode-btn--active' : ''}`}
-            onClick={() => setMode('component')}
-            style={{
-              padding: '7px 16px',
-              borderRadius: 'var(--radius)',
-              border: '1px solid var(--border)',
-              background: mode === 'component' ? 'var(--accent-dim)' : 'var(--bg-secondary)',
-              color: mode === 'component' ? 'var(--accent-light)' : 'var(--text-secondary)',
-              borderColor: mode === 'component' ? 'var(--accent)' : 'var(--border)',
-              cursor: 'pointer',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.8rem',
-            }}
-          >
-            encodeURIComponent
+          <button onClick={() => setMode('component')} style={modeStyle(mode === 'component')}>
+            {t('url.componentMode')}
           </button>
-          <button
-            onClick={() => setMode('full')}
-            style={{
-              padding: '7px 16px',
-              borderRadius: 'var(--radius)',
-              border: '1px solid var(--border)',
-              background: mode === 'full' ? 'var(--accent-dim)' : 'var(--bg-secondary)',
-              color: mode === 'full' ? 'var(--accent-light)' : 'var(--text-secondary)',
-              borderColor: mode === 'full' ? 'var(--accent)' : 'var(--border)',
-              cursor: 'pointer',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.8rem',
-            }}
-          >
-            encodeURI (full URI)
+          <button onClick={() => setMode('full')} style={modeStyle(mode === 'full')}>
+            {t('url.fullMode')}
           </button>
         </div>
         <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-          {mode === 'component'
-            ? '→ Encodes all special chars including :/?#[]@!$&\'()*+,;= — use for query param values'
-            : '→ Preserves URI structure chars (:/?#[]@) — use for complete URLs'
-          }
+          {mode === 'component' ? t('url.componentHint') : t('url.fullHint')}
         </p>
       </div>
 
       <ButtonGroup>
-        <Button onClick={encode} variant="primary">Encode →</Button>
-        <Button onClick={decode} variant="secondary">← Decode</Button>
-        <Button onClick={swap} variant="ghost">⇄ Swap</Button>
-        <Button onClick={clear} variant="ghost">Clear</Button>
+        <Button onClick={encode} variant="primary">{t('common.encode')}</Button>
+        <Button onClick={decode} variant="secondary">{t('common.decode')}</Button>
+        <Button onClick={swap} variant="ghost">{t('common.swap')}</Button>
+        <Button onClick={clear} variant="ghost">{t('common.clear')}</Button>
       </ButtonGroup>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <Panel
-          title="Input"
+          title={t('common.input')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(t => setInput(t))}>
-              Paste
+            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setInput(text))}>
+              {t('common.paste')}
             </Button>
           }
         >
@@ -114,17 +98,17 @@ export default function UrlEncoder() {
         </Panel>
 
         <Panel
-          title="Output"
+          title={t('common.output')}
           actions={
             <Button size="sm" variant="ghost" onClick={() => { if (output) navigator.clipboard.writeText(output); }}>
-              Copy
+              {t('common.copy')}
             </Button>
           }
         >
           <TextArea
             value={output}
             readOnly
-            placeholder="Encoded/decoded result..."
+            placeholder={t('url.outputPlaceholder')}
             rows={12}
           />
         </Panel>

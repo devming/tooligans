@@ -1,0 +1,136 @@
+{
+  "common": {
+    "clientSide": "클라이언트 전용",
+    "advertisement": "광고 · 728×90",
+    "format": "포맷",
+    "minify": "압축",
+    "validate": "검증",
+    "encode": "인코드 →",
+    "decode": "← 디코드",
+    "swap": "⇄ 교체",
+    "clear": "지우기",
+    "copy": "복사",
+    "paste": "붙여넣기",
+    "convert": "변환",
+    "input": "입력",
+    "output": "출력",
+    "noDataSent": "모든 처리는 브라우저에서. 데이터 전송 없음."
+  },
+  "nav": {
+    "home": "홈",
+    "jsonFormatter": "JSON 포맷터",
+    "base64": "Base64",
+    "urlEncoder": "URL 인코더",
+    "jwtDecoder": "JWT 디코더",
+    "timestamp": "타임스탬프"
+  },
+  "home": {
+    "tagline": "개발자 유틸리티, 한 곳에서",
+    "sub": "모든 도구는 브라우저에서 실행됩니다. 서버로 데이터를 전송하지 않습니다.",
+    "footer": "개발자를 위해 제작 · 오픈 소스 · 추적 없음",
+    "tools": {
+      "json": {
+        "title": "JSON 포맷터",
+        "desc": "JSON을 포맷, 압축, 검증하고 구문 강조 표시를 제공합니다."
+      },
+      "base64": {
+        "title": "Base64",
+        "desc": "Base64 문자열을 즉시 인코딩하거나 디코딩합니다."
+      },
+      "url": {
+        "title": "URL 인코더",
+        "desc": "URL 컴포넌트와 전체 URI를 인코딩/디코딩합니다."
+      },
+      "jwt": {
+        "title": "JWT 디코더",
+        "desc": "JWT 토큰을 디코딩하고 헤더, 페이로드, 만료 시간을 확인합니다."
+      },
+      "timestamp": {
+        "title": "타임스탬프 변환기",
+        "desc": "Unix 타임스탬프를 날짜로 변환하거나 그 반대로 변환합니다."
+      }
+    }
+  },
+  "json": {
+    "title": "JSON 포맷터",
+    "desc": "JSON을 포맷, 압축, 검증합니다. 모든 처리는 브라우저에서 이루어집니다.",
+    "spaces2": "2 스페이스",
+    "spaces4": "4 스페이스",
+    "tab": "1 탭 (소프트)",
+    "outputPlaceholder": "포맷된 JSON이 여기에 표시됩니다...",
+    "status": {
+      "formatted": "유효한 JSON — 포맷 완료",
+      "minified": "압축 완료",
+      "valid": "유효한 JSON",
+      "copied": "클립보드에 복사되었습니다!"
+    }
+  },
+  "base64": {
+    "title": "Base64 인코더 / 디코더",
+    "desc": "텍스트를 Base64로 인코딩하거나 Base64를 텍스트로 디코딩합니다. UTF-8 안전.",
+    "inputPlaceholder": "인코딩할 텍스트 또는 디코딩할 Base64를 입력하세요...",
+    "outputPlaceholder": "결과가 여기에 표시됩니다...",
+    "status": {
+      "encoded": "인코딩 완료 (UTF-8 안전)",
+      "decoded": "디코딩 완료",
+      "invalidBase64": "유효하지 않은 Base64 문자열: "
+    }
+  },
+  "url": {
+    "title": "URL 인코더 / 디코더",
+    "desc": "URL 컴포넌트와 전체 URI를 인코딩하거나 디코딩합니다.",
+    "componentMode": "encodeURIComponent",
+    "fullMode": "encodeURI (전체 URI)",
+    "componentHint": "→ :/?#[]@!$&'()*+,;= 포함 모든 특수문자 인코딩 — 쿼리 파라미터 값에 사용",
+    "fullHint": "→ URI 구조 문자(:/?#[]@) 보존 — 완전한 URL에 사용",
+    "outputPlaceholder": "인코딩/디코딩 결과...",
+    "status": {
+      "encodedComponent": "encodeURIComponent로 인코딩 완료",
+      "encodedFull": "encodeURI로 인코딩 완료",
+      "decoded": "디코딩 완료",
+      "malformedURI": "잘못된 URI: "
+    }
+  },
+  "jwt": {
+    "title": "JWT 디코더",
+    "desc": "JSON Web Token을 디코딩하여 헤더, 페이로드, 만료 시간을 확인합니다. 서명은 검증되지 않습니다.",
+    "tokenLabel": "JWT 토큰",
+    "decode": "디코딩",
+    "headerLabel": "헤더",
+    "payloadLabel": "페이로드",
+    "signatureLabel": "서명",
+    "sigNote": "⚠ 서명은 표시되지만 암호학적으로 검증되지 않습니다.",
+    "status": {
+      "decoded": "JWT 디코딩 완료",
+      "invalid3parts": "유효하지 않은 JWT: 3개 파트가 필요합니다 (헤더.페이로드.서명)",
+      "failedDecode": "디코딩 실패: ",
+      "expired": "만료됨: ",
+      "validExpires": "유효 — 만료까지 ",
+      "expiresUnit": "시간 {m}분"
+    }
+  },
+  "timestamp": {
+    "title": "타임스탬프 변환기",
+    "desc": "Unix 타임스탬프를 날짜로 변환하거나 그 반대로 변환합니다.",
+    "currentLabel": "현재 Unix 타임스탬프",
+    "useThis": "사용하기 →",
+    "tsToDate": "Unix 타임스탬프 → 날짜",
+    "dateToTs": "날짜 → Unix 타임스탬프",
+    "seconds": "초",
+    "milliseconds": "밀리초",
+    "utc": "UTC",
+    "local": "로컬",
+    "relative": "상대 시간",
+    "orType": "또는 입력: 2024-01-01T00:00:00Z",
+    "copy": "복사",
+    "ago": "전",
+    "fromNow": "후",
+    "status": {
+      "converted": "변환 완료",
+      "invalidTs": "유효하지 않은 타임스탬프",
+      "outOfRange": "타임스탬프 범위 초과",
+      "enterDate": "날짜/시간을 입력하세요",
+      "invalidDate": "유효하지 않은 날짜 문자열"
+    }
+  }
+}

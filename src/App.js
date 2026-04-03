@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './i18n/LanguageContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import JsonFormatter from './pages/JsonFormatter';
@@ -11,15 +12,17 @@ import './styles/global.css';
 
 export default function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/json" element={<JsonFormatter />} />
-        <Route path="/base64" element={<Base64Tool />} />
-        <Route path="/url" element={<UrlEncoder />} />
-        <Route path="/jwt" element={<JwtDecoder />} />
-        <Route path="/timestamp" element={<TimestampConverter />} />
-      </Routes>
-    </Layout>
+    <LanguageProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/json" element={<JsonFormatter />} />
+          <Route path="/base64" element={<Base64Tool />} />
+          <Route path="/url" element={<UrlEncoder />} />
+          <Route path="/jwt" element={<JwtDecoder />} />
+          <Route path="/timestamp" element={<TimestampConverter />} />
+        </Routes>
+      </Layout>
+    </LanguageProvider>
   );
 }

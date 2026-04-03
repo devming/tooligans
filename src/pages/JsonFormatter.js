@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function JsonFormatter() {
+  const { t } = useLanguage();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState(null);
@@ -12,74 +14,74 @@ export default function JsonFormatter() {
     try {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed, null, indent));
-      setStatus({ type: 'success', message: 'Valid JSON — formatted successfully' });
+      setStatus({ type: 'success', message: t('json.status.formatted') });
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
     }
-  }, [input, indent]);
+  }, [input, indent, t]);
 
   const minify = useCallback(() => {
     if (!input.trim()) return;
     try {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed));
-      setStatus({ type: 'success', message: 'Minified successfully' });
+      setStatus({ type: 'success', message: t('json.status.minified') });
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
     }
-  }, [input]);
+  }, [input, t]);
 
   const validate = useCallback(() => {
     if (!input.trim()) return;
     try {
       JSON.parse(input);
-      setStatus({ type: 'success', message: 'Valid JSON' });
+      setStatus({ type: 'success', message: t('json.status.valid') });
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
     }
-  }, [input]);
+  }, [input, t]);
 
   const clear = () => { setInput(''); setOutput(''); setStatus(null); };
 
   const copyOutput = () => {
     if (output) {
       navigator.clipboard.writeText(output);
-      setStatus({ type: 'info', message: 'Copied to clipboard!' });
+      setStatus({ type: 'info', message: t('json.status.copied') });
     }
   };
 
   return (
     <div>
       <ToolHeader
-        title="JSON Formatter"
-        description="Format, minify, and validate JSON. All processing happens in your browser."
-        badge="Client-side"
+        title={t('json.title')}
+        description={t('json.desc')}
+        badge={t('common.clientSide')}
       />
 
       <ButtonGroup>
-        <Button onClick={format} variant="primary">Format</Button>
-        <Button onClick={minify} variant="secondary">Minify</Button>
-        <Button onClick={validate} variant="secondary">Validate</Button>
+        <Button onClick={format} variant="primary">{t('common.format')}</Button>
+        <Button onClick={minify} variant="secondary">{t('common.minify')}</Button>
+        <Button onClick={validate} variant="secondary">{t('common.validate')}</Button>
         <select
           value={indent}
           onChange={e => setIndent(Number(e.target.value))}
           style={{ width: 'auto', padding: '7px 10px', fontSize: '0.85rem' }}
         >
-          <option value={2}>2 spaces</option>
-          <option value={4}>4 spaces</option>
-          <option value={1}>1 tab (soft)</option>
+          <option value={2}>{t('json.spaces2')}</option>
+          <option value={4}>{t('json.spaces4')}</option>
+          <option value={1}>{t('json.tab')}</option>
         </select>
-        <Button onClick={clear} variant="ghost">Clear</Button>
+        <Button onClick={clear} variant="ghost">{t('common.clear')}</Button>
       </ButtonGroup>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
         <Panel
-          title="Input"
+          title={t('common.input')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(t => setInput(t))}>
-              Paste
+            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setInput(text))}>
+              {t('common.paste')}
             </Button>
           }
         >
@@ -92,15 +94,15 @@ export default function JsonFormatter() {
         </Panel>
 
         <Panel
-          title="Output"
+          title={t('common.output')}
           actions={
-            <Button size="sm" variant="ghost" onClick={copyOutput}>Copy</Button>
+            <Button size="sm" variant="ghost" onClick={copyOutput}>{t('common.copy')}</Button>
           }
         >
           <TextArea
             value={output}
             readOnly
-            placeholder="Formatted JSON will appear here..."
+            placeholder={t('json.outputPlaceholder')}
             rows={16}
           />
         </Panel>

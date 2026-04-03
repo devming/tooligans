@@ -1,0 +1,136 @@
+{
+  "common": {
+    "clientSide": "Client-side",
+    "advertisement": "Advertisement · 728×90",
+    "format": "Format",
+    "minify": "Minify",
+    "validate": "Validate",
+    "encode": "Encode →",
+    "decode": "← Decode",
+    "swap": "⇄ Swap",
+    "clear": "Clear",
+    "copy": "Copy",
+    "paste": "Paste",
+    "convert": "Convert",
+    "input": "Input",
+    "output": "Output",
+    "noDataSent": "All client-side. No data sent."
+  },
+  "nav": {
+    "home": "Home",
+    "jsonFormatter": "JSON Formatter",
+    "base64": "Base64",
+    "urlEncoder": "URL Encoder",
+    "jwtDecoder": "JWT Decoder",
+    "timestamp": "Timestamp"
+  },
+  "home": {
+    "tagline": "Developer utilities, all in one place",
+    "sub": "All tools run entirely in your browser. Zero data sent to any server.",
+    "footer": "Built for developers · Open source · No tracking",
+    "tools": {
+      "json": {
+        "title": "JSON Formatter",
+        "desc": "Format, minify, and validate JSON with syntax highlighting."
+      },
+      "base64": {
+        "title": "Base64",
+        "desc": "Encode and decode Base64 strings and files instantly."
+      },
+      "url": {
+        "title": "URL Encoder",
+        "desc": "Encode/decode URL components and full URIs."
+      },
+      "jwt": {
+        "title": "JWT Decoder",
+        "desc": "Decode JWT tokens, inspect header & payload, check expiry."
+      },
+      "timestamp": {
+        "title": "Timestamp Converter",
+        "desc": "Convert Unix timestamps to dates and back, live counter."
+      }
+    }
+  },
+  "json": {
+    "title": "JSON Formatter",
+    "desc": "Format, minify, and validate JSON. All processing happens in your browser.",
+    "spaces2": "2 spaces",
+    "spaces4": "4 spaces",
+    "tab": "1 tab (soft)",
+    "outputPlaceholder": "Formatted JSON will appear here...",
+    "status": {
+      "formatted": "Valid JSON — formatted successfully",
+      "minified": "Minified successfully",
+      "valid": "Valid JSON",
+      "copied": "Copied to clipboard!"
+    }
+  },
+  "base64": {
+    "title": "Base64 Encoder / Decoder",
+    "desc": "Encode plain text to Base64 or decode Base64 back to text. UTF-8 safe.",
+    "inputPlaceholder": "Enter text to encode, or Base64 to decode...",
+    "outputPlaceholder": "Result appears here...",
+    "status": {
+      "encoded": "Encoded successfully (UTF-8 safe)",
+      "decoded": "Decoded successfully",
+      "invalidBase64": "Invalid Base64 string: "
+    }
+  },
+  "url": {
+    "title": "URL Encoder / Decoder",
+    "desc": "Encode or decode URL components and full URIs.",
+    "componentMode": "encodeURIComponent",
+    "fullMode": "encodeURI (full URI)",
+    "componentHint": "→ Encodes all special chars including :/?#[]@!$&'()*+,;= — use for query param values",
+    "fullHint": "→ Preserves URI structure chars (:/?#[]@) — use for complete URLs",
+    "outputPlaceholder": "Encoded/decoded result...",
+    "status": {
+      "encodedComponent": "Encoded using encodeURIComponent",
+      "encodedFull": "Encoded using encodeURI",
+      "decoded": "Decoded successfully",
+      "malformedURI": "Malformed URI: "
+    }
+  },
+  "jwt": {
+    "title": "JWT Decoder",
+    "desc": "Decode JSON Web Tokens — inspect header, payload, and check expiry. Signature is NOT verified.",
+    "tokenLabel": "JWT Token",
+    "decode": "Decode",
+    "headerLabel": "Header",
+    "payloadLabel": "Payload",
+    "signatureLabel": "Signature",
+    "sigNote": "⚠ Signature is displayed but NOT cryptographically verified.",
+    "status": {
+      "decoded": "JWT decoded successfully",
+      "invalid3parts": "Invalid JWT: must have 3 parts (header.payload.signature)",
+      "failedDecode": "Failed to decode: ",
+      "expired": "Expired on ",
+      "validExpires": "Valid — expires in ",
+      "expiresUnit": "h {m}m"
+    }
+  },
+  "timestamp": {
+    "title": "Timestamp Converter",
+    "desc": "Convert Unix timestamps to human-readable dates and vice versa.",
+    "currentLabel": "Current Unix Timestamp",
+    "useThis": "Use this →",
+    "tsToDate": "Unix Timestamp → Date",
+    "dateToTs": "Date → Unix Timestamp",
+    "seconds": "seconds",
+    "milliseconds": "milliseconds",
+    "utc": "UTC",
+    "local": "Local",
+    "relative": "Relative",
+    "orType": "or type: 2024-01-01T00:00:00Z",
+    "copy": "copy",
+    "ago": "ago",
+    "fromNow": "from now",
+    "status": {
+      "converted": "Converted successfully",
+      "invalidTs": "Invalid timestamp",
+      "outOfRange": "Timestamp out of range",
+      "enterDate": "Enter a date/time",
+      "invalidDate": "Invalid date string"
+    }
+  }
+}

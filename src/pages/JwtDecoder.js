@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
+import { useLanguage } from '../i18n/LanguageContext';
 import './JwtDecoder.css';
 
 function b64decode(str) {
@@ -9,6 +10,7 @@ function b64decode(str) {
 }
 
 export default function JwtDecoder() {
+  const { t } = useLanguage();
   const [token, setToken] = useState('');
   const [decoded, setDecoded] = useState(null);
   const [status, setStatus] = useState(null);
@@ -17,7 +19,7 @@ export default function JwtDecoder() {
     if (!token.trim()) return;
     const parts = token.trim().split('.');
     if (parts.length !== 3) {
-      setStatus({ type: 'error', message: 'Invalid JWT: must have 3 parts (header.payload.signature)' });
+      setStatus({ type: 'error', message: t('jwt.status.invalid3parts') });
       setDecoded(null);
       return;
     }
@@ -31,19 +33,19 @@ export default function JwtDecoder() {
         const now = Math.floor(Date.now() / 1000);
         const expDate = new Date(payload.exp * 1000);
         if (now > payload.exp) {
-          expStatus = { type: 'error', msg: `Expired on ${expDate.toLocaleString()}` };
+          expStatus = { type: 'error', msg: t('jwt.status.expired') + expDate.toLocaleString() };
         } else {
           const diff = payload.exp - now;
           const hours = Math.floor(diff / 3600);
           const mins = Math.floor((diff % 3600) / 60);
-          expStatus = { type: 'success', msg: `Valid — expires in ${hours}h ${mins}m (${expDate.toLocaleString()})` };
+          expStatus = { type: 'success', msg: `${t('jwt.status.validExpires')}${hours}h ${mins}m (${expDate.toLocaleString()})` };
         }
       }
 
       setDecoded({ header, payload, signature, expStatus });
-      setStatus({ type: 'success', message: 'JWT decoded successfully' });
+      setStatus({ type: 'success', message: t('jwt.status.decoded') });
     } catch (e) {
-      setStatus({ type: 'error', message: 'Failed to decode: ' + e.message });
+      setStatus({ type: 'error', message: t('jwt.status.failedDecode') + e.message });
       setDecoded(null);
     }
   };
@@ -53,16 +55,16 @@ export default function JwtDecoder() {
   return (
     <div>
       <ToolHeader
-        title="JWT Decoder"
-        description="Decode JSON Web Tokens — inspect header, payload, and check expiry. Signature is NOT verified."
-        badge="Client-side"
+        title={t('jwt.title')}
+        description={t('jwt.desc')}
+        badge={t('common.clientSide')}
       />
 
       <Panel
-        title="JWT Token"
+        title={t('jwt.tokenLabel')}
         actions={
-          <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(t => setToken(t.trim()))}>
-            Paste
+          <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setToken(text.trim()))}>
+            {t('common.paste')}
           </Button>
         }
       >
@@ -75,20 +77,20 @@ export default function JwtDecoder() {
       </Panel>
 
       <ButtonGroup style={{ marginTop: '12px' }}>
-        <Button onClick={decode} variant="primary">Decode</Button>
-        <Button onClick={clear} variant="ghost">Clear</Button>
+        <Button onClick={decode} variant="primary">{t('jwt.decode')}</Button>
+        <Button onClick={clear} variant="ghost">{t('common.clear')}</Button>
       </ButtonGroup>
 
       {status && <Status type={status.type} message={status.message} />}
 
       {decoded && (
         <div className="jwt-sections">
-          <Panel title="Header" className="jwt-section jwt-section--header">
+          <Panel title={t('jwt.headerLabel')} className="jwt-section jwt-section--header">
             <pre className="jwt-json">{JSON.stringify(decoded.header, null, 2)}</pre>
           </Panel>
 
           <Panel
-            title="Payload"
+            title={t('jwt.payloadLabel')}
             className="jwt-section jwt-section--payload"
             actions={
               decoded.expStatus && (
@@ -101,9 +103,9 @@ export default function JwtDecoder() {
             <pre className="jwt-json">{JSON.stringify(decoded.payload, null, 2)}</pre>
           </Panel>
 
-          <Panel title="Signature" className="jwt-section jwt-section--sig">
+          <Panel title={t('jwt.signatureLabel')} className="jwt-section jwt-section--sig">
             <code className="jwt-sig">{decoded.signature}</code>
-            <p className="jwt-sig-note">⚠ Signature is displayed but NOT cryptographically verified.</p>
+            <p className="jwt-sig-note">{t('jwt.sigNote')}</p>
           </Panel>
         </div>
       )}

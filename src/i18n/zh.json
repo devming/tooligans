@@ -1,0 +1,136 @@
+{
+  "common": {
+    "clientSide": "纯客户端",
+    "advertisement": "广告 · 728×90",
+    "format": "格式化",
+    "minify": "压缩",
+    "validate": "验证",
+    "encode": "编码 →",
+    "decode": "← 解码",
+    "swap": "⇄ 交换",
+    "clear": "清空",
+    "copy": "复制",
+    "paste": "粘贴",
+    "convert": "转换",
+    "input": "输入",
+    "output": "输出",
+    "noDataSent": "纯客户端处理，不发送任何数据。"
+  },
+  "nav": {
+    "home": "首页",
+    "jsonFormatter": "JSON 格式化",
+    "base64": "Base64",
+    "urlEncoder": "URL 编码",
+    "jwtDecoder": "JWT 解码",
+    "timestamp": "时间戳"
+  },
+  "home": {
+    "tagline": "开发者工具集，一站搞定",
+    "sub": "所有工具均在浏览器本地运行，不向任何服务器发送数据。",
+    "footer": "为开发者打造 · 开源 · 无跟踪",
+    "tools": {
+      "json": {
+        "title": "JSON 格式化",
+        "desc": "格式化、压缩和验证 JSON，支持语法高亮。"
+      },
+      "base64": {
+        "title": "Base64",
+        "desc": "即时编码或解码 Base64 字符串。"
+      },
+      "url": {
+        "title": "URL 编码",
+        "desc": "编码/解码 URL 组件和完整 URI。"
+      },
+      "jwt": {
+        "title": "JWT 解码",
+        "desc": "解码 JWT 令牌，查看头部、载荷和过期时间。"
+      },
+      "timestamp": {
+        "title": "时间戳转换",
+        "desc": "Unix 时间戳与日期互转，实时计数器。"
+      }
+    }
+  },
+  "json": {
+    "title": "JSON 格式化",
+    "desc": "格式化、压缩和验证 JSON，所有处理均在浏览器本地完成。",
+    "spaces2": "2 个空格",
+    "spaces4": "4 个空格",
+    "tab": "1 个制表符（软）",
+    "outputPlaceholder": "格式化后的 JSON 将显示在这里...",
+    "status": {
+      "formatted": "JSON 有效 — 格式化成功",
+      "minified": "压缩成功",
+      "valid": "JSON 有效",
+      "copied": "已复制到剪贴板！"
+    }
+  },
+  "base64": {
+    "title": "Base64 编码 / 解码",
+    "desc": "将文本编码为 Base64 或将 Base64 解码为文本，支持 UTF-8。",
+    "inputPlaceholder": "输入要编码的文本，或要解码的 Base64...",
+    "outputPlaceholder": "结果显示在这里...",
+    "status": {
+      "encoded": "编码成功（UTF-8 安全）",
+      "decoded": "解码成功",
+      "invalidBase64": "无效的 Base64 字符串："
+    }
+  },
+  "url": {
+    "title": "URL 编码 / 解码",
+    "desc": "编码或解码 URL 组件和完整 URI。",
+    "componentMode": "encodeURIComponent",
+    "fullMode": "encodeURI（完整 URI）",
+    "componentHint": "→ 编码所有特殊字符包括 :/?#[]@!$&'()*+,;= — 用于查询参数值",
+    "fullHint": "→ 保留 URI 结构字符 (:/?#[]@) — 用于完整 URL",
+    "outputPlaceholder": "编码/解码结果...",
+    "status": {
+      "encodedComponent": "已使用 encodeURIComponent 编码",
+      "encodedFull": "已使用 encodeURI 编码",
+      "decoded": "解码成功",
+      "malformedURI": "URI 格式错误："
+    }
+  },
+  "jwt": {
+    "title": "JWT 解码",
+    "desc": "解码 JSON Web Token，查看头部、载荷和过期时间。签名不做验证。",
+    "tokenLabel": "JWT 令牌",
+    "decode": "解码",
+    "headerLabel": "头部",
+    "payloadLabel": "载荷",
+    "signatureLabel": "签名",
+    "sigNote": "⚠ 签名仅供展示，不进行密码学验证。",
+    "status": {
+      "decoded": "JWT 解码成功",
+      "invalid3parts": "无效的 JWT：必须包含 3 个部分（头部.载荷.签名）",
+      "failedDecode": "解码失败：",
+      "expired": "已过期于 ",
+      "validExpires": "有效 — 将在 ",
+      "expiresUnit": "小时 {m} 分钟后过期"
+    }
+  },
+  "timestamp": {
+    "title": "时间戳转换",
+    "desc": "Unix 时间戳与可读日期互转。",
+    "currentLabel": "当前 Unix 时间戳",
+    "useThis": "使用此值 →",
+    "tsToDate": "Unix 时间戳 → 日期",
+    "dateToTs": "日期 → Unix 时间戳",
+    "seconds": "秒",
+    "milliseconds": "毫秒",
+    "utc": "UTC",
+    "local": "本地",
+    "relative": "相对时间",
+    "orType": "或输入：2024-01-01T00:00:00Z",
+    "copy": "复制",
+    "ago": "前",
+    "fromNow": "后",
+    "status": {
+      "converted": "转换成功",
+      "invalidTs": "无效的时间戳",
+      "outOfRange": "时间戳超出范围",
+      "enterDate": "请输入日期/时间",
+      "invalidDate": "无效的日期字符串"
+    }
+  }
+}
