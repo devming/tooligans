@@ -25,12 +25,11 @@ export default function Layout({ children }) {
   return (
     <div className={`layout ${collapsed ? 'layout--collapsed' : ''}`}>
       {/* Top AdSense Banner */}
-      <div className="adsense-top">
-        {AD_SLOT_TOP
-          ? <AdBanner slot={AD_SLOT_TOP} format="horizontal" />
-          : <div className="adsense-placeholder adsense-leaderboard"><span>{t('common.advertisement')}</span></div>
-        }
-      </div>
+      {AD_SLOT_TOP && (
+        <div className="adsense-top">
+          <AdBanner slot={AD_SLOT_TOP} format="horizontal" />
+        </div>
+      )}
 
       <div className="layout__body">
         {/* Sidebar */}
@@ -91,12 +90,11 @@ export default function Layout({ children }) {
       </div>
 
       {/* Bottom AdSense Banner */}
-      <div className="adsense-bottom">
-        {AD_SLOT_BOTTOM
-          ? <AdBanner slot={AD_SLOT_BOTTOM} format="horizontal" />
-          : <div className="adsense-placeholder adsense-leaderboard"><span>{t('common.advertisement')}</span></div>
-        }
-      </div>
+      {AD_SLOT_BOTTOM && (
+        <div className="adsense-bottom">
+          <AdBanner slot={AD_SLOT_BOTTOM} format="horizontal" />
+        </div>
+      )}
     </div>
   );
 }

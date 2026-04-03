@@ -46,9 +46,6 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="home__footer">
-        <p>{t('home.footer')}</p>
-      </div>
     </div>
   );
 }
