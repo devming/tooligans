@@ -5,6 +5,7 @@
     "format": "フォーマット",
     "minify": "圧縮",
     "validate": "検証",
+    "prettier": "Prettier",
     "encode": "エンコード →",
     "decode": "← デコード",
     "swap": "⇄ 入れ替え",
@@ -62,6 +63,7 @@
       "formatted": "有効なJSON — フォーマット完了",
       "minified": "圧縮完了",
       "valid": "有効なJSON",
+      "prettified": "整形完了 — キーをアルファベット順にソート",
       "copied": "クリップボードにコピーしました！"
     }
   },

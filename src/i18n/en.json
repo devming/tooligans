@@ -5,6 +5,7 @@
     "format": "Format",
     "minify": "Minify",
     "validate": "Validate",
+    "prettier": "Prettier",
     "encode": "Encode →",
     "decode": "← Decode",
     "swap": "⇄ Swap",
@@ -62,6 +63,7 @@
       "formatted": "Valid JSON — formatted successfully",
       "minified": "Minified successfully",
       "valid": "Valid JSON",
+      "prettified": "Prettified — keys sorted alphabetically",
       "copied": "Copied to clipboard!"
     }
   },

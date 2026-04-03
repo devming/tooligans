@@ -5,6 +5,7 @@
     "format": "格式化",
     "minify": "压缩",
     "validate": "验证",
+    "prettier": "Prettier",
     "encode": "编码 →",
     "decode": "← 解码",
     "swap": "⇄ 交换",
@@ -62,6 +63,7 @@
       "formatted": "JSON 有效 — 格式化成功",
       "minified": "压缩成功",
       "valid": "JSON 有效",
+      "prettified": "整理完成 — 键已按字母排序",
       "copied": "已复制到剪贴板！"
     }
   },

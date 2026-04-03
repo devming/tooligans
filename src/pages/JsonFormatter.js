@@ -1,6 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+
+function sortKeysDeep(obj) {
+  if (Array.isArray(obj)) return obj.map(sortKeysDeep);
+  if (obj !== null && typeof obj === 'object') {
+    return Object.keys(obj).sort().reduce((acc, key) => {
+      acc[key] = sortKeysDeep(obj[key]);
+      return acc;
+    }, {});
+  }
+  return obj;
+}
 
 export default function JsonFormatter() {
   const { t } = useLanguage();
@@ -9,12 +20,39 @@ export default function JsonFormatter() {
   const [status, setStatus] = useState(null);
   const [indent, setIndent] = useState(2);
 
+  // 실시간 검증
+  useEffect(() => {
+    if (!input.trim()) {
+      setStatus(null);
+      return;
+    }
+    try {
+      JSON.parse(input);
+      setStatus({ type: 'success', message: t('json.status.valid') });
+    } catch (e) {
+      setStatus({ type: 'error', message: e.message });
+    }
+  }, [input, t]);
+
   const format = useCallback(() => {
     if (!input.trim()) return;
     try {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed, null, indent));
       setStatus({ type: 'success', message: t('json.status.formatted') });
+    } catch (e) {
+      setStatus({ type: 'error', message: e.message });
+      setOutput('');
+    }
+  }, [input, indent, t]);
+
+  const prettier = useCallback(() => {
+    if (!input.trim()) return;
+    try {
+      const parsed = JSON.parse(input);
+      const sorted = sortKeysDeep(parsed);
+      setOutput(JSON.stringify(sorted, null, indent));
+      setStatus({ type: 'success', message: t('json.status.prettified') });
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
@@ -30,16 +68,6 @@ export default function JsonFormatter() {
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
-    }
-  }, [input, t]);
-
-  const validate = useCallback(() => {
-    if (!input.trim()) return;
-    try {
-      JSON.parse(input);
-      setStatus({ type: 'success', message: t('json.status.valid') });
-    } catch (e) {
-      setStatus({ type: 'error', message: e.message });
     }
   }, [input, t]);
 
@@ -62,8 +90,8 @@ export default function JsonFormatter() {
 
       <ButtonGroup>
         <Button onClick={format} variant="primary">{t('common.format')}</Button>
+        <Button onClick={prettier} variant="secondary">{t('common.prettier')}</Button>
         <Button onClick={minify} variant="secondary">{t('common.minify')}</Button>
-        <Button onClick={validate} variant="secondary">{t('common.validate')}</Button>
         <select
           value={indent}
           onChange={e => setIndent(Number(e.target.value))}

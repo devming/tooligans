@@ -5,6 +5,7 @@
     "format": "포맷",
     "minify": "압축",
     "validate": "검증",
+    "prettier": "Prettier",
     "encode": "인코드 →",
     "decode": "← 디코드",
     "swap": "⇄ 교체",
@@ -62,6 +63,7 @@
       "formatted": "유효한 JSON — 포맷 완료",
       "minified": "압축 완료",
       "valid": "유효한 JSON",
+      "prettified": "정리 완료 — 키가 알파벳순으로 정렬됨",
       "copied": "클립보드에 복사되었습니다!"
     }
   },
