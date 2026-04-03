@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import Seo from '../components/Seo';
 import './JwtDecoder.css';
 
 function b64decode(str) {
@@ -54,6 +55,7 @@ export default function JwtDecoder() {
 
   return (
     <div>
+      <Seo title="JWT Decoder" description="Decode JSON Web Tokens online. Inspect header, payload, check expiry. Free, no data sent to servers." path="/jwt" />
       <ToolHeader
         title={t('jwt.title')}
         description={t('jwt.desc')}

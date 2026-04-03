@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import Seo from '../components/Seo';
 
 function sortKeysDeep(obj) {
   if (Array.isArray(obj)) return obj.map(sortKeysDeep);
@@ -70,6 +71,7 @@ export default function JsonFormatter() {
 
   return (
     <div>
+      <Seo title="JSON Formatter & Prettier" description="Format, prettify (sort keys), minify and validate JSON online. Free, real-time validation, 100% client-side." path="/json" />
       <ToolHeader
         title={t('json.title')}
         description={t('json.desc')}

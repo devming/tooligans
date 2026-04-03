@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
+import Seo from '../components/Seo';
 import './Home.css';
 
 const TOOL_KEYS = [
@@ -16,6 +17,10 @@ export default function Home() {
 
   return (
     <div className="home">
+      <Seo
+        description="Free online developer utilities — JSON formatter, Base64 encoder/decoder, URL encoder, JWT decoder, Unix timestamp converter. All client-side, no data sent."
+        path="/"
+      />
       <div className="home__hero">
         <h1 className="home__title">
           Tool<span className="home__accent">igans</span>

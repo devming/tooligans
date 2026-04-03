@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToolHeader, Panel, Button, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import Seo from '../components/Seo';
 import './TimestampConverter.css';
 
 export default function TimestampConverter() {
@@ -61,6 +62,7 @@ export default function TimestampConverter() {
 
   return (
     <div>
+      <Seo title="Unix Timestamp Converter" description="Convert Unix timestamps to human-readable dates and vice versa. Live counter, free, client-side." path="/timestamp" />
       <ToolHeader
         title={t('timestamp.title')}
         description={t('timestamp.desc')}

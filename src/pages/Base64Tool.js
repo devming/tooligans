@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import Seo from '../components/Seo';
 
 export default function Base64Tool() {
   const { t } = useLanguage();
@@ -41,6 +42,7 @@ export default function Base64Tool() {
 
   return (
     <div>
+      <Seo title="Base64 Encoder / Decoder" description="Encode text to Base64 or decode Base64 to text online. UTF-8 safe, free, client-side." path="/base64" />
       <ToolHeader
         title={t('base64.title')}
         description={t('base64.desc')}
