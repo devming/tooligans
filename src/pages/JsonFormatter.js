@@ -34,18 +34,6 @@ export default function JsonFormatter() {
     }
   }, [input, t]);
 
-  const format = useCallback(() => {
-    if (!input.trim()) return;
-    try {
-      const parsed = JSON.parse(input);
-      setOutput(JSON.stringify(parsed, null, indent));
-      setStatus({ type: 'success', message: t('json.status.formatted') });
-    } catch (e) {
-      setStatus({ type: 'error', message: e.message });
-      setOutput('');
-    }
-  }, [input, indent, t]);
-
   const prettier = useCallback(() => {
     if (!input.trim()) return;
     try {
@@ -89,8 +77,7 @@ export default function JsonFormatter() {
       />
 
       <ButtonGroup>
-        <Button onClick={format} variant="primary">{t('common.format')}</Button>
-        <Button onClick={prettier} variant="secondary">{t('common.prettier')}</Button>
+        <Button onClick={prettier} variant="primary">{t('common.prettier')}</Button>
         <Button onClick={minify} variant="secondary">{t('common.minify')}</Button>
         <select
           value={indent}
