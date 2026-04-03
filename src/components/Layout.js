@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLanguage, LANGUAGES } from '../i18n/LanguageContext';
+import AdBanner from './AdBanner';
 import './Layout.css';
+
+// AdSense 슬롯 ID — AdSense 대시보드에서 광고 유닛 생성 후 입력
+// https://www.google.com/adsense → 광고 → 광고 단위 → 디스플레이 광고
+const AD_SLOT_TOP = '';    // 예: '1234567890'
+const AD_SLOT_BOTTOM = ''; // 예: '0987654321'
 
 const NAV_KEYS = [
   { path: '/', key: 'home', icon: '⌂', exact: true },
@@ -20,9 +26,10 @@ export default function Layout({ children }) {
     <div className={`layout ${collapsed ? 'layout--collapsed' : ''}`}>
       {/* Top AdSense Banner */}
       <div className="adsense-top">
-        <div className="adsense-placeholder adsense-leaderboard">
-          <span>{t('common.advertisement')}</span>
-        </div>
+        {AD_SLOT_TOP
+          ? <AdBanner slot={AD_SLOT_TOP} format="horizontal" />
+          : <div className="adsense-placeholder adsense-leaderboard"><span>{t('common.advertisement')}</span></div>
+        }
       </div>
 
       <div className="layout__body">
@@ -87,9 +94,10 @@ export default function Layout({ children }) {
 
       {/* Bottom AdSense Banner */}
       <div className="adsense-bottom">
-        <div className="adsense-placeholder adsense-leaderboard">
-          <span>{t('common.advertisement')}</span>
-        </div>
+        {AD_SLOT_BOTTOM
+          ? <AdBanner slot={AD_SLOT_BOTTOM} format="horizontal" />
+          : <div className="adsense-placeholder adsense-leaderboard"><span>{t('common.advertisement')}</span></div>
+        }
       </div>
     </div>
   );
