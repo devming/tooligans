@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import { trackToolUse, trackCopy, trackPaste } from '../analytics';
 import Seo from '../components/Seo';
 
 export default function Base64Tool() {
@@ -15,6 +16,7 @@ export default function Base64Tool() {
       const encoded = btoa(unescape(encodeURIComponent(input)));
       setOutput(encoded);
       setStatus({ type: 'success', message: t('base64.status.encoded') });
+      trackToolUse('base64', 'encode');
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
     }
@@ -26,6 +28,7 @@ export default function Base64Tool() {
       const decoded = decodeURIComponent(escape(atob(input)));
       setOutput(decoded);
       setStatus({ type: 'success', message: t('base64.status.decoded') });
+      trackToolUse('base64', 'decode');
     } catch (e) {
       setStatus({ type: 'error', message: t('base64.status.invalidBase64') + e.message });
     }
@@ -59,7 +62,7 @@ export default function Base64Tool() {
         <Panel
           title={t('common.input')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setInput(text))}>
+            <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.readText().then(text => setInput(text)); trackPaste('base64'); }}>
               {t('common.paste')}
             </Button>
           }
@@ -75,7 +78,7 @@ export default function Base64Tool() {
         <Panel
           title={t('common.output')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => { if (output) navigator.clipboard.writeText(output); }}>
+            <Button size="sm" variant="ghost" onClick={() => { if (output) { navigator.clipboard.writeText(output); trackCopy('base64'); } }}>
               {t('common.copy')}
             </Button>
           }

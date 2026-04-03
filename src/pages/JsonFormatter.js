@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import { trackToolUse, trackCopy, trackPaste } from '../analytics';
 import Seo from '../components/Seo';
 
 function sortKeysDeep(obj) {
@@ -42,6 +43,7 @@ export default function JsonFormatter() {
       const sorted = sortKeysDeep(parsed);
       setOutput(JSON.stringify(sorted, null, indent));
       setStatus({ type: 'success', message: t('json.status.prettified') });
+      trackToolUse('json', 'prettier', `indent:${indent}`);
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
@@ -54,6 +56,7 @@ export default function JsonFormatter() {
       const parsed = JSON.parse(input);
       setOutput(JSON.stringify(parsed));
       setStatus({ type: 'success', message: t('json.status.minified') });
+      trackToolUse('json', 'minify');
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
       setOutput('');
@@ -66,6 +69,7 @@ export default function JsonFormatter() {
     if (output) {
       navigator.clipboard.writeText(output);
       setStatus({ type: 'info', message: t('json.status.copied') });
+      trackCopy('json');
     }
   };
 
@@ -96,7 +100,7 @@ export default function JsonFormatter() {
         <Panel
           title={t('common.input')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setInput(text))}>
+            <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.readText().then(text => setInput(text)); trackPaste('json'); }}>
               {t('common.paste')}
             </Button>
           }

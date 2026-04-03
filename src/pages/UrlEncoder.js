@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import { trackToolUse, trackCopy, trackPaste } from '../analytics';
 import Seo from '../components/Seo';
 
 export default function UrlEncoder() {
@@ -18,6 +19,7 @@ export default function UrlEncoder() {
         : encodeURI(input);
       setOutput(result);
       setStatus({ type: 'success', message: mode === 'component' ? t('url.status.encodedComponent') : t('url.status.encodedFull') });
+      trackToolUse('url', 'encode', mode);
     } catch (e) {
       setStatus({ type: 'error', message: e.message });
     }
@@ -31,6 +33,7 @@ export default function UrlEncoder() {
         : decodeURI(input);
       setOutput(result);
       setStatus({ type: 'success', message: t('url.status.decoded') });
+      trackToolUse('url', 'decode', mode);
     } catch (e) {
       setStatus({ type: 'error', message: t('url.status.malformedURI') + e.message });
     }
@@ -85,7 +88,7 @@ export default function UrlEncoder() {
         <Panel
           title={t('common.input')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setInput(text))}>
+            <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.readText().then(text => setInput(text)); trackPaste('url'); }}>
               {t('common.paste')}
             </Button>
           }
@@ -101,7 +104,7 @@ export default function UrlEncoder() {
         <Panel
           title={t('common.output')}
           actions={
-            <Button size="sm" variant="ghost" onClick={() => { if (output) navigator.clipboard.writeText(output); }}>
+            <Button size="sm" variant="ghost" onClick={() => { if (output) { navigator.clipboard.writeText(output); trackCopy('url'); } }}>
               {t('common.copy')}
             </Button>
           }

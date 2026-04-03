@@ -1,6 +1,7 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
+import { trackPageView } from './analytics';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import JsonFormatter from './pages/JsonFormatter';
@@ -10,9 +11,18 @@ import JwtDecoder from './pages/JwtDecoder';
 import TimestampConverter from './pages/TimestampConverter';
 import './styles/global.css';
 
+function PageTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    trackPageView(location.pathname, document.title);
+  }, [location]);
+  return null;
+}
+
 export default function App() {
   return (
     <LanguageProvider>
+      <PageTracker />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

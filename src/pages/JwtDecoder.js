@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToolHeader, Panel, TextArea, Button, ButtonGroup, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import { trackToolUse, trackPaste } from '../analytics';
 import Seo from '../components/Seo';
 import './JwtDecoder.css';
 
@@ -45,6 +46,7 @@ export default function JwtDecoder() {
 
       setDecoded({ header, payload, signature, expStatus });
       setStatus({ type: 'success', message: t('jwt.status.decoded') });
+      trackToolUse('jwt', 'decode', `alg:${header.alg || 'unknown'}`);
     } catch (e) {
       setStatus({ type: 'error', message: t('jwt.status.failedDecode') + e.message });
       setDecoded(null);
@@ -64,7 +66,7 @@ export default function JwtDecoder() {
       <Panel
         title={t('jwt.tokenLabel')}
         actions={
-          <Button size="sm" variant="ghost" onClick={() => navigator.clipboard.readText().then(text => setToken(text.trim()))}>
+          <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.readText().then(text => setToken(text.trim())); trackPaste('jwt'); }}>
             {t('common.paste')}
           </Button>
         }

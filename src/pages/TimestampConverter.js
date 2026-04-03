@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ToolHeader, Panel, Button, Status } from '../components/ToolPage';
 import { useLanguage } from '../i18n/LanguageContext';
+import { trackToolUse, trackCopy } from '../analytics';
 import Seo from '../components/Seo';
 import './TimestampConverter.css';
 
@@ -32,6 +33,7 @@ export default function TimestampConverter() {
       relative: formatRelative(d),
     });
     setStatus({ type: 'success', message: t('timestamp.status.converted') });
+    trackToolUse('timestamp', 'ts_to_date', unit);
   };
 
   const convertDate = () => {
@@ -43,6 +45,7 @@ export default function TimestampConverter() {
       unixMs: d.getTime(),
     });
     setStatus({ type: 'success', message: t('timestamp.status.converted') });
+    trackToolUse('timestamp', 'date_to_ts');
   };
 
   const useNow = () => {
@@ -152,7 +155,7 @@ export default function TimestampConverter() {
                   {dateResult.unix}
                   <button
                     className="ts-copy-btn"
-                    onClick={() => navigator.clipboard.writeText(String(dateResult.unix))}
+                    onClick={() => { navigator.clipboard.writeText(String(dateResult.unix)); trackCopy('timestamp'); }}
                   >{t('timestamp.copy')}</button>
                 </span>
               </div>
@@ -162,7 +165,7 @@ export default function TimestampConverter() {
                   {dateResult.unixMs}
                   <button
                     className="ts-copy-btn"
-                    onClick={() => navigator.clipboard.writeText(String(dateResult.unixMs))}
+                    onClick={() => { navigator.clipboard.writeText(String(dateResult.unixMs)); trackCopy('timestamp'); }}
                   >{t('timestamp.copy')}</button>
                 </span>
               </div>

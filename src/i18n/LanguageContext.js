@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { trackLangChange } from '../analytics';
 import en from './en.json';
 import ko from './ko.json';
 import zh from './zh.json';
@@ -31,6 +32,7 @@ export function LanguageProvider({ children }) {
     if (!TRANSLATIONS[code]) return;
     setLangState(code);
     try { localStorage.setItem('tooligans_lang', code); } catch {}
+    trackLangChange(code);
   }, []);
 
   // t('json.status.formatted') — dot-path accessor
