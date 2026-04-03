@@ -55,11 +55,10 @@ export default function JwtDecoder() {
 
   return (
     <div>
-      <Seo title="JWT Decoder" description="Decode JSON Web Tokens online. Inspect header, payload, check expiry. Free, no data sent to servers." path="/jwt" />
+      <Seo title="JWT Decoder" description="Decode JSON Web Tokens online. Inspect header, payload, check expiry. Free." path="/jwt" />
       <ToolHeader
         title={t('jwt.title')}
         description={t('jwt.desc')}
-        badge={t('common.clientSide')}
       />
 
       <Panel

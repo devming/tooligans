@@ -62,11 +62,10 @@ export default function TimestampConverter() {
 
   return (
     <div>
-      <Seo title="Unix Timestamp Converter" description="Convert Unix timestamps to human-readable dates and vice versa. Live counter, free, client-side." path="/timestamp" />
+      <Seo title="Unix Timestamp Converter" description="Convert Unix timestamps to human-readable dates and vice versa. Live counter, free." path="/timestamp" />
       <ToolHeader
         title={t('timestamp.title')}
         description={t('timestamp.desc')}
-        badge={t('common.clientSide')}
       />
 
       {/* Live clock */}

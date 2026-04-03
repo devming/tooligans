@@ -54,11 +54,10 @@ export default function UrlEncoder() {
 
   return (
     <div>
-      <Seo title="URL Encoder / Decoder" description="Encode or decode URL components and full URIs online. Supports encodeURIComponent and encodeURI modes. Free, client-side." path="/url" />
+      <Seo title="URL Encoder / Decoder" description="Encode or decode URL components and full URIs online. Supports encodeURIComponent and encodeURI modes. Free." path="/url" />
       <ToolHeader
         title={t('url.title')}
         description={t('url.desc')}
-        badge={t('common.clientSide')}
       />
 
       <div style={{ marginBottom: '16px' }}>

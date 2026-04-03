@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="home">
       <Seo
-        description="Free online developer utilities — JSON formatter, Base64 encoder/decoder, URL encoder, JWT decoder, Unix timestamp converter. All client-side, no data sent."
+        description="Free online developer utilities — JSON formatter, Base64 encoder/decoder, URL encoder, JWT decoder, Unix timestamp converter."
         path="/"
       />
       <div className="home__hero">
@@ -26,7 +26,6 @@ export default function Home() {
           Tool<span className="home__accent">igans</span>
         </h1>
         <p className="home__tagline">{t('home.tagline')}</p>
-        <p className="home__sub">{t('home.sub')}</p>
       </div>
 
       <div className="home__grid">

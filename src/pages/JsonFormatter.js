@@ -71,11 +71,10 @@ export default function JsonFormatter() {
 
   return (
     <div>
-      <Seo title="JSON Formatter & Prettier" description="Format, prettify (sort keys), minify and validate JSON online. Free, real-time validation, 100% client-side." path="/json" />
+      <Seo title="JSON Formatter & Prettier" description="Format, prettify (sort keys), minify and validate JSON online. Free with real-time validation." path="/json" />
       <ToolHeader
         title={t('json.title')}
         description={t('json.desc')}
-        badge={t('common.clientSide')}
       />
 
       <ButtonGroup>

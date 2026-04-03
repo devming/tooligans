@@ -81,9 +81,7 @@ export default function Layout({ children }) {
             ))}
           </div>
 
-          <div className="sidebar__footer">
-            <p className="sidebar__tagline">{t('common.noDataSent')}</p>
-          </div>
+          <div className="sidebar__footer" />
         </aside>
 
         {/* Main content */}
