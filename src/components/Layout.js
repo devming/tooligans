@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLanguage, LANGUAGES } from '../i18n/LanguageContext';
 import AdBanner from './AdBanner';
+import BookmarkPrompt from './BookmarkPrompt';
 import './Layout.css';
 
 // AdSense 슬롯 ID — AdSense 대시보드에서 광고 유닛 생성 후 입력
@@ -64,6 +65,9 @@ export default function Layout({ children }) {
               </NavLink>
             ))}
           </nav>
+
+          {/* Bookmark Prompt */}
+          <BookmarkPrompt collapsed={collapsed} />
 
           {/* Language Selector */}
           <div className="sidebar__lang">

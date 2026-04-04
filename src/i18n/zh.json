@@ -134,5 +134,10 @@
       "enterDate": "请输入日期/时间",
       "invalidDate": "无效的日期字符串"
     }
+  },
+  "bookmark": {
+    "title": "收藏此页！",
+    "sub": "随时快速访问",
+    "alertMsg": "按 Ctrl+D（Mac 为 Cmd+D）收藏此页！"
   }
 }

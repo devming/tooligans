@@ -1,0 +1,150 @@
+/* Bookmark Prompt */
+.bookmark-prompt {
+  margin: 8px 10px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.12), rgba(108, 92, 231, 0.04));
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  animation: bookmark-slide-in 0.5s ease-out;
+  overflow: hidden;
+}
+
+.bookmark-prompt:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(108, 92, 231, 0.08));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.2);
+}
+
+@keyframes bookmark-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Close button */
+.bookmark-prompt__close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0 3px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition);
+}
+.bookmark-prompt:hover .bookmark-prompt__close {
+  opacity: 1;
+}
+.bookmark-prompt__close:hover {
+  color: var(--text-primary);
+}
+
+/* Star icon with glow */
+.bookmark-prompt__star {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookmark-prompt__star-icon {
+  font-size: 1.2rem;
+  color: #fdcb6e;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(0 0 4px rgba(253, 203, 110, 0.5));
+  animation: bookmark-pulse 2s ease-in-out infinite;
+}
+
+.bookmark-prompt__star-glow {
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(253, 203, 110, 0.3), transparent 70%);
+  border-radius: 50%;
+  animation: bookmark-glow 2s ease-in-out infinite;
+}
+
+@keyframes bookmark-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(8deg); }
+}
+
+@keyframes bookmark-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+/* Text */
+.bookmark-prompt__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.bookmark-prompt__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-prompt__sub {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Keyboard shortcut */
+.bookmark-prompt__kbd {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent-light);
+  background: rgba(108, 92, 231, 0.15);
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Collapsed state — just the star */
+.bookmark-prompt--collapsed {
+  padding: 8px;
+  justify-content: center;
+  margin: 8px 6px;
+}
+.bookmark-prompt--collapsed .bookmark-prompt__text,
+.bookmark-prompt--collapsed .bookmark-prompt__kbd,
+.bookmark-prompt--collapsed .bookmark-prompt__close {
+  display: none;
+}
+.bookmark-prompt--collapsed .bookmark-prompt__star {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+}

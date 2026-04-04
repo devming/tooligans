@@ -134,5 +134,10 @@
       "enterDate": "날짜/시간을 입력하세요",
       "invalidDate": "유효하지 않은 날짜 문자열"
     }
+  },
+  "bookmark": {
+    "title": "즐겨찾기에 추가!",
+    "sub": "언제든 빠르게 접근",
+    "alertMsg": "Ctrl+D (Mac은 Cmd+D)를 눌러 즐겨찾기에 추가하세요!"
   }
 }

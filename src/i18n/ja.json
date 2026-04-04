@@ -134,5 +134,10 @@
       "enterDate": "日付/時刻を入力してください",
       "invalidDate": "無効な日付文字列"
     }
+  },
+  "bookmark": {
+    "title": "ブックマークに追加！",
+    "sub": "いつでもすぐアクセス",
+    "alertMsg": "Ctrl+D（Macは Cmd+D）でブックマークに追加！"
   }
 }
