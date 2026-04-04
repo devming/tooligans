@@ -1,4 +1,4 @@
-/* Bookmark Prompt */
+/* Bookmark Prompt — vertical stack layout */
 .bookmark-prompt {
   margin: 8px 10px;
   padding: 10px 12px;
@@ -8,11 +8,11 @@
   cursor: pointer;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   transition: all 0.3s ease;
   animation: bookmark-slide-in 0.5s ease-out;
-  overflow: hidden;
 }
 
 .bookmark-prompt:hover {
@@ -23,21 +23,15 @@
 }
 
 @keyframes bookmark-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Close button */
 .bookmark-prompt__close {
   position: absolute;
-  top: 3px;
-  right: 5px;
+  top: 4px;
+  right: 6px;
   background: none;
   border: none;
   color: var(--text-muted);
@@ -48,19 +42,14 @@
   opacity: 0;
   transition: opacity var(--transition), color var(--transition);
 }
-.bookmark-prompt:hover .bookmark-prompt__close {
-  opacity: 1;
-}
-.bookmark-prompt__close:hover {
-  color: var(--text-primary);
-}
+.bookmark-prompt:hover .bookmark-prompt__close { opacity: 1; }
+.bookmark-prompt__close:hover { color: var(--text-primary); }
 
 /* Star icon with glow */
 .bookmark-prompt__star {
   position: relative;
   width: 28px;
   height: 28px;
-  min-width: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,30 +82,25 @@
   50% { opacity: 0.8; transform: scale(1.3); }
 }
 
-/* Text */
+/* Text — centered */
 .bookmark-prompt__text {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1px;
-  flex: 1;
-  min-width: 0;
 }
 
 .bookmark-prompt__title {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .bookmark-prompt__sub {
   font-size: 0.65rem;
   color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
 }
 
 /* Keyboard shortcut */
@@ -127,15 +111,13 @@
   background: rgba(108, 92, 231, 0.15);
   border: 1px solid rgba(108, 92, 231, 0.3);
   border-radius: 4px;
-  padding: 2px 6px;
+  padding: 2px 8px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-/* Collapsed state — just the star */
+/* Collapsed state — star only */
 .bookmark-prompt--collapsed {
   padding: 8px;
-  justify-content: center;
   margin: 8px 6px;
 }
 .bookmark-prompt--collapsed .bookmark-prompt__text,
@@ -146,5 +128,4 @@
 .bookmark-prompt--collapsed .bookmark-prompt__star {
   width: 24px;
   height: 24px;
-  min-width: 24px;
 }
