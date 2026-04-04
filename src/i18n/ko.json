@@ -138,6 +138,6 @@
   "bookmark": {
     "title": "즐겨찾기에 추가!",
     "sub": "언제든 빠르게 접근",
-    "alertMsg": "Ctrl+D (Mac은 Cmd+D)를 눌러 즐겨찾기에 추가하세요!"
+    "nudge": "아래 단축키를 눌러주세요!"
   }
 }

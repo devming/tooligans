@@ -3,7 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import './BookmarkPrompt.css';
 
 const STORAGE_KEY = 'tooligans_bookmark_dismissed';
-const SHOW_DELAY = 3000; // 3초 후 표시
+const SHOW_DELAY = 3000;
 
 function isMac() {
   return navigator.platform?.toUpperCase().indexOf('MAC') >= 0;
@@ -12,6 +12,7 @@ function isMac() {
 export default function BookmarkPrompt({ collapsed }) {
   const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
+  const [nudge, setNudge] = useState(false);
   const [dismissed, setDismissed] = useState(() => {
     try { return localStorage.getItem(STORAGE_KEY) === '1'; } catch { return false; }
   });
@@ -30,7 +31,9 @@ export default function BookmarkPrompt({ collapsed }) {
   };
 
   const handleClick = () => {
-    alert(t('bookmark.alertMsg'));
+    // 클릭 시 키보드 단축키 강조 애니메이션
+    setNudge(true);
+    setTimeout(() => setNudge(false), 1500);
   };
 
   if (dismissed || !visible) return null;
@@ -48,9 +51,11 @@ export default function BookmarkPrompt({ collapsed }) {
       </div>
       <div className="bookmark-prompt__text">
         <span className="bookmark-prompt__title">{t('bookmark.title')}</span>
-        <span className="bookmark-prompt__sub">{t('bookmark.sub')}</span>
+        <span className={`bookmark-prompt__sub ${nudge ? 'bookmark-prompt__sub--nudge' : ''}`}>
+          {nudge ? t('bookmark.nudge') : t('bookmark.sub')}
+        </span>
       </div>
-      <kbd className="bookmark-prompt__kbd">{shortcut}</kbd>
+      <kbd className={`bookmark-prompt__kbd ${nudge ? 'bookmark-prompt__kbd--nudge' : ''}`}>{shortcut}</kbd>
     </div>
   );
 }

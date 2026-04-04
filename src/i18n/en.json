@@ -138,6 +138,6 @@
   "bookmark": {
     "title": "Bookmark this!",
     "sub": "Quick access anytime",
-    "alertMsg": "Press Ctrl+D (or Cmd+D on Mac) to bookmark this page!"
+    "nudge": "Press the shortcut below!"
   }
 }
